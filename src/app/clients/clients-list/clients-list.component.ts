@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client, ClientService } from '../client.service';
-import { NavController, IonHeader, IonContent, IonList, IonItem, IonLabel, IonToolbar, IonTitle } from "@ionic/angular/standalone";
+import { IonHeader, IonContent, IonList, IonItem, IonLabel, IonToolbar, IonTitle } from "@ionic/angular/standalone";
+import { CommonModule, NgForOf } from '@angular/common';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { NavController, IonHeader, IonContent, IonList, IonItem, IonLabel, IonTo
   templateUrl: './clients-list.component.html',
   styleUrls: ['./clients-list.component.scss'],
   standalone: true,  
-  imports: [IonTitle, IonToolbar, IonLabel, IonItem, IonList, IonContent, IonHeader]
+  imports: [IonTitle, IonToolbar, IonLabel, IonItem, IonList, IonContent, IonHeader, CommonModule]
 })
 export class ClientsListComponent  implements OnInit {
 
@@ -23,6 +24,9 @@ export class ClientsListComponent  implements OnInit {
   loadClients() {
     this.clientService.getClients().subscribe(data => {
       this.clients = data;
+    },
+    (error) => {
+      console.error('Erro ao buscar clientes:', error);
     })
   }
 

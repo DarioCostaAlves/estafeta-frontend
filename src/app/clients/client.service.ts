@@ -14,15 +14,22 @@ export interface Client{
 })
 export class ClientService {
 
-  private baseUrl = 'http://sua-api-url/api';
+  private baseUrl = 'http://localhost:5178';
 
   constructor(private http: HttpClient) { }
 
   getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.baseUrl}/clients`);
+    return this.http.get<Client[]>(`${this.baseUrl}/Clients`);
   }
   
-  
+  //adicionado para client-detail
+  getClientById(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+  //adicionado para client-detail
+  deleteClient(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
 }
 
 

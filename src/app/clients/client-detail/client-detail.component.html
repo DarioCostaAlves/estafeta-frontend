@@ -1,7 +1,19 @@
-<p>
-  client-detail works!
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Client Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <!--<ion-button expand="full" color="danger" (click)="onDeleteAmigo()"
-    >Eliminar Amigo</ion-button
-  >!-->
-</p>
+<ion-content>
+  <ion-card *ngIf="client">
+    <ion-card-header>
+      <ion-card-title>{{ client.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Email: {{ client.email }}</p>
+      <p>Phone Number: {{ client.phoneNumber }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  
+</ion-content>
