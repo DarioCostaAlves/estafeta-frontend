@@ -10,18 +10,6 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
-  },
-  {
-    path: 'map',
-    loadComponent: () => import('./map/map.page').then( m => m.MapPage)
-  },
-  {
-    path: 'map',
-    loadComponent: () => import('./map/map.page').then( m => m.MapPage)
-  },
-  {
-    path: 'settings',
-    loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
-  },
+  },  
 ];
 
