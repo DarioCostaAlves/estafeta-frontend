@@ -38,6 +38,16 @@ export class MapaComponent  implements AfterViewInit {
     setTimeout(() => {
       MapaComponent.map.invalidateSize();
     }, 500);
-  }
+  };
+
+  /*addMarker(position:, title: , iconUrl: string =''){
+    const marker = new L.Marker({
+      position: '',
+      map: this.map,
+      title: title,
+      icon: iconUrl
+    });
+    return marker
+  }*/
 
 }
