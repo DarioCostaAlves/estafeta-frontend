@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Client, ClientService } from '../client.service';
+import { ClientService } from '../client.service';
+import { Client } from '../client.model';
 import { IonHeader, IonContent, IonList, IonItem, IonLabel, IonToolbar, IonTitle } from "@ionic/angular/standalone";
 import { CommonModule, NgForOf } from '@angular/common';
 
@@ -26,7 +27,7 @@ export class ClientsListComponent  implements OnInit {
       this.clients = data;
     },
     (error) => {
-      console.error('Erro ao buscar clientes:', error);
+      console.error('Erro ao encontrar clientes:', error);
     })
   }
 

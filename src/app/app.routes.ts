@@ -16,6 +16,10 @@ export const routes: Routes = [
   
   },
   {
+    path: 'stores',
+    loadComponent: () => import('./stores/stores-list/stores-list.component').then((m) => m.StoresListComponent),
+  },  
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
