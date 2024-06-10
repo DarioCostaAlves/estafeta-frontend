@@ -1,5 +1,4 @@
-import { Routes } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -8,17 +7,21 @@ export const routes: Routes = [
   },
   {
     path: 'clients',
-    loadComponent: () => import('./clients/clients-list/clients-list.component').then((m) => m.ClientsListComponent),
+    loadComponent: () =>
+      import('./clients/clients-list/clients-list.component').then(
+        (m) => m.ClientsListComponent
+      ),
   },
   {
-    path: 'client-detail',
-    loadComponent: () => import('./clients/client-detail/client-detail.component').then((m) => m.ClientDetailComponent),
-  
+    path: 'clients/:id',
+    loadComponent: () =>
+      import('./clients/client-detail/client-detail.component').then(
+        (m) => m.ClientDetailComponent
+      ),
   },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
-  },  
+  },
 ];
-
