@@ -6,7 +6,7 @@ export interface Warehouse {
     name: string;
     long: number;
     lat: number;
-    geom: string;
+    geom: string; // Ensure this property is correctly defined
   };
   inactive: boolean;
   parsedCoordinate?: ParsedCoordinates;

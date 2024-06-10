@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Warehouse } from './warehouse.model';
-import {
-  GraphNodeService,
-  ParsedCoordinates,
-} from '../graph-nodes/graph-node.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,18 +9,24 @@ import {
 export class WarehouseService {
   private baseUrl = 'http://localhost:5178';
 
-  constructor(
-    private http: HttpClient,
-    private graphNodeService: GraphNodeService
-  ) {}
+  constructor(private http: HttpClient) {}
 
   getWarehouses(): Observable<Warehouse[]> {
     return this.http.get<Warehouse[]>(`${this.baseUrl}/Warehouses`).pipe(
       map((warehouses: Warehouse[]) => {
         warehouses.forEach((warehouse: Warehouse) => {
-          warehouse.parsedCoordinate = this.graphNodeService.extractCoordinates(
-            warehouse.coordinate.geom
-          );
+          if (
+            warehouse.coordinate &&
+            warehouse.coordinate.long !== undefined &&
+            warehouse.coordinate.lat !== undefined
+          ) {
+            warehouse.parsedCoordinate = {
+              long: warehouse.coordinate.long,
+              lat: warehouse.coordinate.lat,
+            };
+          } else {
+            console.error('Warehouse coordinates are missing:', warehouse);
+          }
         });
         return warehouses;
       })
