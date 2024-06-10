@@ -20,9 +20,26 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'create-client',
+    loadComponent: () =>
+      import('./clients/create-client/create-client.component').then(
+        (m) => m.CreateClientComponent
+      ),
+  },
+  {
     path: 'stores',
-    loadComponent: () => import('./stores/stores-list/stores-list.component').then((m) => m.StoresListComponent),
-  },  
+    loadComponent: () =>
+      import('./stores/stores-list/stores-list.component').then(
+        (m) => m.StoresListComponent
+      ),
+  },
+  {
+    path: 'orders',
+    loadComponent: () =>
+      import('./orders/order-list/order-list.component').then(
+        (m) => m.OrderListComponent
+      ),
+  },
   {
     path: '',
     redirectTo: 'home',

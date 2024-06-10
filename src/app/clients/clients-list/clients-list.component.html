@@ -5,16 +5,37 @@
         <mat-icon>arrow_back</mat-icon>
       </ion-button>
     </ion-buttons>
-    <ion-card-header>
-      <ion-card-title>Clientes Listados</ion-card-title>
-    </ion-card-header>
+    <ion-buttons slot="end">
+      <ion-searchbar
+        placeholder="Search Clients"
+        [(ngModel)]="searchQuery"
+        (ionInput)="filterClients()"
+      ></ion-searchbar>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
+    <h3>Clientes Listados</h3>
+
+    <ion-buttons slot="start">
+      <ion-button class="round-button" (click)="goToCreateClient()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="3em"
+          height="2em"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M448 224H288V64h-64v160H64v64h160v160h64V288h160z"
+            fill="currentColor"
+          />
+        </svg>
+      </ion-button>
+    </ion-buttons>
     <ion-item
-      *ngFor="let client of clients"
+      *ngFor="let client of filteredClients"
       (click)="goToClientDetail(client.id)"
     >
       <ion-label>
