@@ -9,8 +9,8 @@
     <ion-item *ngFor="let store of stores">
       <ion-label>
         <h2>{{ store.name }}</h2>
-        <p>{{ store.coordinate }}</p>
-        <p>{{ store.inactive }}</p>
+        <p>Coordinate: {{ store.coordinate.name }} ({{ store.coordinate.geom }})</p>
+        <p>Inactive: {{ store.inactive ? 'Yes' : 'No' }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

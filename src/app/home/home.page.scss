@@ -25,3 +25,22 @@
 #container a {
   text-decoration: none;
 }
+
+.input-box {
+  width:50%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid blue($color: #000000);
+}
+
+.ion-col {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
