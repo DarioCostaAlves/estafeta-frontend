@@ -34,6 +34,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'warehouses',
+    loadComponent: () =>
+      import('./warehouses/warehouses-list/warehouses-list.component').then(
+        (m) => m.WarehousesListComponent
+      ),
+  },
+  {
     path: 'orders',
     loadComponent: () =>
       import('./orders/order-list/order-list.component').then(

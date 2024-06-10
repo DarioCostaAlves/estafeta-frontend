@@ -12,7 +12,7 @@ import { WarehouseService } from '../warehouse.service';
   standalone: true,  
   imports: [IonTitle, IonToolbar, IonLabel, IonItem, IonList, IonContent, IonHeader, CommonModule]
 })
-export class StoresListComponent  implements OnInit {
+export class WarehousesListComponent  implements OnInit {
 
   warehouses: Warehouse[] = [];
 
