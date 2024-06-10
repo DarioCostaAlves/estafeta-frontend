@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Client } from './client.model';
+import { Store } from './store.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class StoreService {
 
   private baseUrl = 'http://localhost:5178';
 
   constructor(private http: HttpClient) { }
 
-  getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.baseUrl}/Clients`);
+  getStores(): Observable<Store[]> {
+    return this.http.get<Store[]>(`${this.baseUrl}/Stores`);
   }
   
-  //adicionado para client-detail
-  getClientById(id: number): Observable<any> {
+  //adicionado para store-detail
+  getStoreById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
-  //adicionado para client-detail
-  deleteClient(id: number): Observable<any> {
+  //adicionado para store-detail
+  deleteStore(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

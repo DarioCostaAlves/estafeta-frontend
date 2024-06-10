@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { ClientService } from '../client.service'; // Ajuste o caminho conforme necessário
+import { ClientService } from '../store.service'; // Ajuste o caminho conforme necessário
 import { SharedModule } from 'src/app/shared.module';
 import { IonCardHeader } from "@ionic/angular/standalone";
 

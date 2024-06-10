@@ -1,5 +1,6 @@
 import { provideHttpClient } from '@angular/common/http';
 import { enableProdMode } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   RouteReuseStrategy,
