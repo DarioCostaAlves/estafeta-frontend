@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="round-button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-searchbar
+        placeholder="Search Orders"
+        [(ngModel)]="searchQuery"
+        (ionInput)="filterOrders()"
+      ></ion-searchbar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>Ordens Listadas</h3>
+  <ion-list>
+    <ion-item
+      *ngFor="let order of filteredOrders"
+      (click)="goToOrderDetail(order.id)"
+    >
+      <ion-label>
+        <h6>{{ order.client.name }}</h6>
+        <p>{{ order.type }}</p>
+        <p>{{ order.state }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
