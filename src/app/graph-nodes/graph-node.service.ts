@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GraphNodeService {
-
-  constructor() { }
-
   extractCoordinates(geom: string): ParsedCoordinates {
-    const parsedGeom: GeoJSON.Geometry = JSON.parse(geom);
-    if (parsedGeom.type === 'Point' && Array.isArray(parsedGeom.coordinates) && parsedGeom.coordinates.length === 2) {
-      const longitude = parsedGeom.coordinates[0];
-      const latitude = parsedGeom.coordinates[1];
-      return { latitude, longitude };
-    } else {
-      console.error('Formato geom inválido:', parsedGeom);
-      return { latitude: 0, longitude: 0 };
+    if (!geom) {
+      console.error('Geom is undefined:', geom);
+      return { long: 0, lat: 0 };
     }
+
+    const coordinates = geom.match(/[-.\d]+/g);
+    if (coordinates && coordinates.length === 2) {
+      return {
+        long: parseFloat(coordinates[0]),
+        lat: parseFloat(coordinates[1]),
+      };
+    }
+    return { long: 0, lat: 0 };
   }
-  
 }
 
 export interface ParsedCoordinates {
-  latitude: number;
-  longitude: number;
+  long: number;
+  lat: number;
 }

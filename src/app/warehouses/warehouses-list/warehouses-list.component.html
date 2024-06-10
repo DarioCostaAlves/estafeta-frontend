@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Warehouses</ion-title>
+    <ion-title>Armazéns</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,8 +9,10 @@
     <ion-item *ngFor="let warehouse of warehouses">
       <ion-label>
         <h2>{{ warehouse.name }}</h2>
-        <p>Coordinate: {{ warehouse.parsedCoordinate.latitude }} ({{ warehouse.parsedCoordinate.longitude }})</p>
-        <p>Inactive: {{ warehouse.inactive ? 'Yes' : 'No' }}</p>
+        <p>
+          Latitude: {{ warehouse.coordinate.lat }}, Longitude:
+          {{ warehouse.coordinate.long }}
+        </p>
       </ion-label>
     </ion-item>
   </ion-list>
