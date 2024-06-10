@@ -1,14 +1,54 @@
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-crossorigin=""></script>
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
 
 <div class="map-container">
   <div class="map-frame">
-    <div id="map"></div>
+    <div id="map" style="height: 300px; width: 100%"></div>
   </div>
 </div>
 
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <ion-input
+        id="latitude"
+        label="Latitude"
+        class="input-box"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Colocar Coordenada"
+        [value]="latitude"
+        (ionInput)="onLatitudeChange($event)"
+      ></ion-input>
+    </ion-col>
+    <ion-col size="12">
+      <ion-input
+        id="longitude"
+        label="Longitude"
+        class="input-box"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Colocar Coordenada"
+        [value]="longitude"
+        (ionInput)="onLongitudeChange($event)"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col size="8" class="ion-col">
+      <ion-button shape="round">Submit</ion-button>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+</ion-grid>
