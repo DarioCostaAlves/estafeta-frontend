@@ -27,7 +27,7 @@ export class WarehousesListComponent  implements OnInit {
       this.warehouses = data;
     },
     (error) => {
-      console.error('Erro ao encontrar lojas:', error);
+      console.error('Erro ao encontrar armazéns:', error);
     })
   }
 
