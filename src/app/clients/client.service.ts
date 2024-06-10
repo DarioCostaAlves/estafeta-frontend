@@ -1,73 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Client } from './client.model';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ClientService {
-
-  private baseUrl = 'http://localhost:5178';
-
-  constructor(private http: HttpClient) { }
-
-  getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.baseUrl}/Clients`);
-  }
-  
-  //adicionado para client-detail
-  getClientById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
-  }
-  //adicionado para client-detail
-  deleteClient(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
-  }
+export interface Client {
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
 }
 
+@Injectable({
+  providedIn: 'root',
+})
+export class ClientService {
+  private apiUrl = 'http://localhost:5178';
 
+  constructor(private http: HttpClient) {}
 
+  getAllClients(): Observable<Client[]> {
+    return this.http.get<Client[]>(`${this.apiUrl}/Clients`);
+  }
 
-//Remover//
-/*deleteClient_REStAPI(idCliente: number): Observable<Client> {
-  return this.httpCliente
-  .delete<Client>(`${this.baseUrl}/clients/${idClient}/')
-  .pipe(
-    tap((_) => console.log(`removeu`)),
-    catchError(this.handleError<Client>(`Apagar Client ${idClient}`))
-  );
-}*/
+  getClientById(id: number): Observable<Client> {
+    return this.http.get<Client>(`${this.apiUrl}/Clients/${id}`);
+  }
 
+  deleteClient(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/Clients/${id}`);
+  }
 
-
-/*onDeleteClient(){
-  this.alertCtrl
-  .create({
-    header: 'Confirmação',
-    message: 'Deseja eliminar este registo de Cliente?',
-    buttons: [
-      {text: 'Cancelar', role: 'cancel'},
-      {text: 'Eliminar',
-        handle: () => {
-          this.ClientService.deleteClient_REStAPI(this.loadedClient.id).
-          subscribe(_ => {
-            this.zone.run(() => this.router.navigate(['/clients']));
-          })
-        },
-      },
-    ],
-  })
-  .then((alert) => alert.present());
-}*/
-
-
-
-
-
-
-
-
-
-
-
+  updateClient(id: number, client: Client): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/Clients/${id}`, client);
+  }
+}

@@ -1,14 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Clients</ion-title>
+    <ion-buttons slot="start">
+      <ion-button class="round-button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-card-header>
+      <ion-card-title>Clientes Listados</ion-card-title>
+    </ion-card-header>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let client of clients">
+    <ion-item
+      *ngFor="let client of clients"
+      (click)="goToClientDetail(client.id)"
+    >
       <ion-label>
-        <h2>{{ client.name }}</h2>
+        <h6>{{ client.name }}</h6>
         <p>{{ client.email }}</p>
         <p>{{ client.phoneNumber }}</p>
       </ion-label>

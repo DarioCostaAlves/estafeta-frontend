@@ -1,19 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Client Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-button class="round-button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Client Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="client">
+<ion-content *ngIf="client">
+  <ion-card *ngIf="!isEditMode">
     <ion-card-header>
       <ion-card-title>{{ client.name }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>Email: {{ client.email }}</p>
-      <p>Phone Number: {{ client.phoneNumber }}</p>
+      <p>Phone: {{ client.phoneNumber }}</p>
+      <ion-button expand="block" (click)="toggleEditMode()">Edit</ion-button>
+      <ion-button expand="block" color="danger" (click)="deleteClient()"
+        >Delete</ion-button
+      >
     </ion-card-content>
   </ion-card>
 
-  
+  <ion-card *ngIf="isEditMode">
+    <form [formGroup]="clientForm" (ngSubmit)="saveClient()">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input formControlName="phoneNumber"></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit" [disabled]="!clientForm.valid"
+        >Save</ion-button
+      >
+      <ion-button expand="block" color="medium" (click)="toggleEditMode()"
+        >Cancel</ion-button
+      >
+    </form>
+  </ion-card>
 </ion-content>

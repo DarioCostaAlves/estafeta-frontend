@@ -1,0 +1,15 @@
+.round-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  border-radius: 12px; // Ajuste o valor conforme necessário para tornar as bordas mais curvas
+  width: 40px;
+  height: 40px;
+}
+
+mat-icon {
+  font-size: 24px;
+  color: white;
+}
