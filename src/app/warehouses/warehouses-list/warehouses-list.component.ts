@@ -11,7 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { WarehouseService } from '../warehouse.service';
-
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-warehouses-list',
   templateUrl: './warehouses-list.component.html',
@@ -31,7 +31,10 @@ import { WarehouseService } from '../warehouse.service';
 export class WarehousesListComponent implements OnInit {
   warehouses: Warehouse[] = [];
 
-  constructor(private warehouseService: WarehouseService) {}
+  constructor(
+    private warehouseService: WarehouseService,
+    private navCtrl: NavController
+  ) {}
 
   ngOnInit() {
     this.loadWarehouses();
@@ -46,5 +49,8 @@ export class WarehousesListComponent implements OnInit {
         console.error('Erro ao encontrar armazéns:', error);
       }
     );
+  }
+  goBack() {
+    this.navCtrl.back();
   }
 }
