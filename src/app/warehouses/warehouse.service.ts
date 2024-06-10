@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Warehouse } from './warehouse.model';
+import { GraphNodeService, ParsedCoordinates } from '../graph-nodes/graph-node.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,17 @@ export class WarehouseService {
 
   private baseUrl = 'http://localhost:5178';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private graphNodeService: GraphNodeService) { }
 
   getWarehouses(): Observable<Warehouse[]> {
-    return this.http.get<Warehouse[]>(`${this.baseUrl}/Warehouses`);
+    return this.http.get<Warehouse[]>(`${this.baseUrl}/Warehouses`).pipe(
+      map((warehouses: Warehouse[]) => {
+        warehouses.forEach((warehouse: Warehouse) => {
+          warehouse.parsedCoordinate = this.graphNodeService.extractCoordinates(warehouse.coordinate.geom);
+        });
+        return warehouses;
+      })
+    );
   }
   
   //adicionado para warehouse-detail

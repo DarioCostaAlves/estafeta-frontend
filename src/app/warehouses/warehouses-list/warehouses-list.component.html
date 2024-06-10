@@ -9,7 +9,7 @@
     <ion-item *ngFor="let warehouse of warehouses">
       <ion-label>
         <h2>{{ warehouse.name }}</h2>
-        <p>Coordinate: {{ warehouse.coordinate.name }} ({{ warehouse.coordinate.geom }})</p>
+        <p>Coordinate: {{ warehouse.parsedCoordinate.latitude }} ({{ warehouse.parsedCoordinate.longitude }})</p>
         <p>Inactive: {{ warehouse.inactive ? 'Yes' : 'No' }}</p>
       </ion-label>
     </ion-item>
